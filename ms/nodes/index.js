@@ -7,6 +7,7 @@ findButton.addEventListener("click", function () {
     .value
     .split(',')
     .map(n => n.trim());
+  console.log(`Need: ${need}`);
 
   const nodes = document
     .getElementById('have')
@@ -15,14 +16,15 @@ findButton.addEventListener("click", function () {
     .map(node => node.trim())
     .filter(node => node);
   const uniqueNodes = [...new Set(nodes)];
+  console.log(`Unique nodes: ${uniqueNodes}`);
 
   const combinations = generateCombinations(uniqueNodes, nodeCount);
+  console.log(`Combinations: ${JSON.stringify(combinations)}`);
 
   var output = "";
 
   for (const combination of combinations) {
     const combinationString = combination.join('');
-    console.log(combinationString);
     const counter = {};
     for (const c of combinationString) {
       counter[c] = (counter[c] || 0) + 1;
@@ -32,17 +34,19 @@ findButton.addEventListener("click", function () {
     var hasValidCount = true;
     for (const node in counter) {
       if (counter[node] != 2 && need.includes(node)) {
+        console.log(`Discarding ${JSON.stringify(combination)}`);
         hasValidCount = false
       }
     }
     if (!hasValidCount) {
-      break;
+      continue;
     }
 
     const needSet = new Set(need);
     const haveSet = new Set(Object.getOwnPropertyNames(counter));
     const hasUniqueStartingNodes = (new Set(combination.map(n => n[0]))).size == nodeCount;
     if (isSuperset(haveSet, needSet) && hasUniqueStartingNodes) {
+      console.log(`Found ${JSON.stringify(combination)}`);
       output += JSON.stringify(combination) + '\n';
     }
   }
