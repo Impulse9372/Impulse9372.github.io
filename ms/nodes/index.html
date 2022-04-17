@@ -26,15 +26,22 @@
           <div class="mb-4">
             <label class="form-label text-decoration-underline">Number of Nodes Needed</label>
             <input class="form-control" id="nodeCount" value="4">
-            <div class="form-text">For example, Night Walkers only need 3, while Hayatos and Kannas need 4.</div>
+            <div class="form-text">For example, 3 for Night Walkers, 4 for Hayatos, and 6 for Kannas.</div>
           </div>
           <div class="mb-4">
             <label class="form-label text-decoration-underline">Skills Needed</label>
             <input class="form-control" id="need" value="A, B, C, D, E, F">
-            <div class="form-text">List nodes that are always required and need to be boosted twice.<br>For Adeles that have 6 required skills, you'd put "A, B, C, D, E, F".<br>For Hayatos that have 5
+            <div class="form-text">List nodes that are always required and need to be boosted twice.<br>For Adeles that
+              have 6 required skills, you'd put "A, B, C, D, E, F".<br>For Hayatos that have 5
               required skills and a choice for their last one, you'd put "A, B, C, D, E"; F = Sudden Strike; G = Summer
               Rain.<br>For Night Walkers that have 4 required skills and a choice for their last one, you'd put "A, B,
               C, D"; E = Dominion; F = Shadow Stitch.</div>
+          </div>
+          <div class="mb-4 form-check">
+            <input type="checkbox" checked class="form-check-input" id="boostTwice">
+            <label class="form-check-label">Remaining skills must be boosted twice.</label>
+            <div class="form-text">Uncheck for classes like Night Walker which only needs to boost their last skill
+              once.</div>
           </div>
           <div class="mb-4">
             <label class="form-label text-decoration-underline">Potential Nodes</label>
@@ -44,12 +51,6 @@ BCA
 DEF
 FED
 DCB</textarea>
-          </div>
-          <div class="mb-4 form-check">
-            <input type="checkbox" checked class="form-check-input" id="boostTwice">
-            <label class="form-check-label">Remaining skills must be boosted twice.</label>
-            <div class="form-text">Uncheck for classes like Night Walker which only needs to boost their last skill
-              once.</div>
           </div>
           <button type="submit" class="btn btn-primary" id="find">Find Combinations</button>
         </form>
