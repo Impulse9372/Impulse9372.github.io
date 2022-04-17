@@ -1,36 +1,70 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Nodes</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <h3>Number of Nodes Needed</h3>
-    <input id="nodeCount" value="4"></input>
-
-    <h3>Skills Needed</h3>
-    <input id="need" value="A, B, C, D, E, F"></input>
-
-    <h3>Current Potential Nodes</h3>
-    <textarea id="have"rows="10" cols="20">
+  <div class="container">
+    <div class="row justify-content-md-center mt-3 mb-4">
+      <div class="col-md-8">
+        <h1 class="text-center">Node Combinations</h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8">
+        <form onsubmit="return false;">
+          <div class="mb-4">
+            <label class="form-label text-decoration-underline">Number of Nodes Needed</label>
+            <input class="form-control" id="nodeCount" value="4">
+            <div class="form-text">For example, Night Walkers only need 3, while Hayatos and Kannas need 4.</div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label text-decoration-underline">Skills Needed</label>
+            <input class="form-control" id="need" value="A, B, C, D, E, F">
+            <div class="form-text">List nodes that are always required and need to be boosted twice.<br>For Adeles that have 6 required skills, you'd put "A, B, C, D, E, F".<br>For Hayatos that have 5
+              required skills and a choice for their last one, you'd put "A, B, C, D, E"; F = Sudden Strike; G = Summer
+              Rain.<br>For Night Walkers that have 4 required skills and a choice for their last one, you'd put "A, B,
+              C, D"; E = Dominion; F = Shadow Stitch.</div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label text-decoration-underline">Potential Nodes</label>
+            <textarea class="form-control" id="have" rows="10">
 ABC
 BCA
 DEF
 FED
-DCB
-    </textarea>
-    <br>
-    <br>
-    <button type="button" id="find">Find combinations</button>
-
-    <br>
-    <br>
-    <div id="output"></div>
+DCB</textarea>
+          </div>
+          <div class="mb-4 form-check">
+            <input type="checkbox" checked class="form-check-input" id="boostTwice">
+            <label class="form-check-label">Remaining skills must be boosted twice.</label>
+            <div class="form-text">Uncheck for classes like Night Walker which only needs to boost their last skill
+              once.</div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="find">Find Combinations</button>
+        </form>
+      </div>
+    </div>
+    <div class="row justify-content-md-center mt-5 mb-3">
+      <div class="col-md-8">
+        <div id="output"></div>
+      </div>
+    </div>
+  </div>
   <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

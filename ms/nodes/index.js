@@ -2,6 +2,7 @@ var findButton = document.getElementById("find");
 
 findButton.addEventListener("click", function () {
   const nodeCount = parseInt(document.getElementById('nodeCount').value);
+  const boostTwice = document.getElementById('boostTwice').checked;
   const need = document
     .getElementById('need')
     .value
@@ -33,7 +34,7 @@ findButton.addEventListener("click", function () {
     // Validate that each needed node is only present twice
     var hasValidCount = true;
     for (const node in counter) {
-      if (counter[node] != 2 && need.includes(node)) {
+      if (counter[node] != 2 && (need.includes(node) || boostTwice)) {
         console.log(`Discarding ${JSON.stringify(combination)}`);
         hasValidCount = false
       }
@@ -47,11 +48,14 @@ findButton.addEventListener("click", function () {
     const hasUniqueStartingNodes = (new Set(combination.map(n => n[0]))).size == nodeCount;
     if (isSuperset(haveSet, needSet) && hasUniqueStartingNodes) {
       console.log(`Found ${JSON.stringify(combination)}`);
-      output += JSON.stringify(combination) + '\n';
+      output += combination.join(', ') + '\n';
     }
   }
 
   const outputDiv = document.getElementById('output');
+  if (output == "") {
+    output = "No combinations found.";
+  }
   outputDiv.innerText = output;
 });
 
